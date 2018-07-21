@@ -175,9 +175,22 @@ naturally and fill the space evenly */
   margin: 15px;
   min-height: 380px;
   padding: 0 0 25px;
-  text-align: left;
+  text-align: center;
   min-width: 270px;
   max-width: 300px;
+}
+
+/* first media query breaks single column to double column
+   second media query breaks double column to triple column */
+@media screen and (max-width: 709px) {
+  #restaurants-list li {
+    min-width: 80%;
+  } 
+}
+@media screen and (max-width: 1031px) {
+  #restaurants-list li {
+    max-width: 45%;
+  }
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
