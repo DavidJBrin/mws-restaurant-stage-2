@@ -257,7 +257,7 @@ controlling placement on the page
   text-transform: uppercase;
 }
 #restaurant-img {
-  width: 100%
+  max-width: 100%;
 }
 #location-address-hours {
   padding: 10px 10px;
@@ -282,6 +282,10 @@ controlling placement on the page
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
 }
 .flex-layout-location-hours {
   display: flex;
