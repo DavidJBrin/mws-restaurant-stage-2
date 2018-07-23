@@ -28,8 +28,9 @@ a {
 	text-decoration: none;
 }
 a:hover, a:focus {
-	color: #3397db;
-	text-decoration: none;
+	color: #fa7923;
+  text-decoration: none;
+  border-width: 10px;
 }
 a img{
 	border: none 0px #fff;
@@ -150,6 +151,12 @@ to smaller displays and still retain useability */
   margin-right: 5px;
 }
 
+.hidden-accessibility-label {
+  position: absolute;
+  left: -7000px;
+  z-index: 100;
+  background: #fff;
+}
 /* ====================== Restaurant Listing ====================== */
 /* Primary opportunity for mobile responsiveness; strategy is to flexbox the div containing 
 the listings and add @media queries to provide breakpoints for the flow of the list of restaurant choices */
@@ -215,9 +222,9 @@ naturally and fill the space evenly */
   font-size: 12px;
 }
 #restaurants-list li a {
-  background-color: orange;
+  background-color: rgb(0, 0, 0);
   border-bottom: 3px solid #eee;
-  color: #fff;
+  color: #f18200;
   display: inline-block;
   font-size: 12px;
   margin: 15px 0 0;
