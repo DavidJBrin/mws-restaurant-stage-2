@@ -1,3 +1,10 @@
+/* Building the service worker was accomplished while viewing the Offline First modules
+that are part of the course, and adapting the promises and functions to fit the restaurant
+site and ensure the cache was reflective of the needs of the site.
+Last reviewed 7/23/2018 @ Udacity Nanodegree: Mobile Web Specialist, Lesson 17: Introducing
+the service worker.
+*/ 
+
 var staticCacheName = "mws-restaurant-v1";
 
 // create a cache with the above files

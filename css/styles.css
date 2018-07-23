@@ -158,6 +158,14 @@ to smaller displays and still retain useability */
   background: #fff;
 }
 /* ====================== Restaurant Listing ====================== */
+/* The general approach to restructuring and reflowing the main page was inspired
+  by viewing Doug Brown's mws-project-1 walkthrough posted by Udacity on Youtube. Notes
+  taken in the course of viewing the video led to many of the design decisions, while 
+  some of his design choices didn't work for my final approach, some of the formatting
+  and image. 
+  Last reviewed 7/23/2018 @ https://www.youtube.com/watch?v=92dtrNU1GQc
+*/ 
+
 /* Primary opportunity for mobile responsiveness; strategy is to flexbox the div containing 
 the listings and add @media queries to provide breakpoints for the flow of the list of restaurant choices */
 
@@ -235,6 +243,14 @@ naturally and fill the space evenly */
 }
 
 /* ====================== Restaurant Details ====================== */
+/* The general approach to restructuring and reflowing the details page was inspired
+  by viewing Doug Brown's mws-project-1 walkthrough posted by Udacity on Youtube. Notes
+  taken in the course of viewing the video led to many of the design decisions, while 
+  some of his design choices didn't work for my final approach, some of the formatting
+  and image. 
+  Last reviewed 7/23/2018 @ https://www.youtube.com/watch?v=92dtrNU1GQc
+*/ 
+
 /* removed .inside header to check the effect on the page. The formatting in this header
 was causing significant layout and flow issues around flex
 */
@@ -265,17 +281,6 @@ controlling placement on the page
 }
 /*removing restaurant image from details page as it is unnecessary and doesn't add
 valuable information*/
-
-/*#restaurant-img {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  padding: 20px;
-  max-width: 100%;
-  max-width: 600px;
-}
-*/
 
 #location-address-hours {
   padding: 10px 10px;
