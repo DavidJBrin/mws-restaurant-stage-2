@@ -263,9 +263,20 @@ controlling placement on the page
   margin: 10px 10px 10px 10px;
   text-transform: uppercase;
 }
-#restaurant-img {
+/*removing restaurant image from details page as it is unnecessary and doesn't add
+valuable information*/
+
+/*#restaurant-img {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px;
   max-width: 100%;
+  max-width: 600px;
 }
+*/
+
 #location-address-hours {
   padding: 10px 10px;
 }
