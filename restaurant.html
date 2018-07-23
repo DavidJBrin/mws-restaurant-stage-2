@@ -21,7 +21,7 @@
     </nav>
     <!-- Beginning breadcrumb -->
     <!-- adding a nav tag to breadcrumb as it is an internal navigation element; accessibility change-->
-  <nav>  
+  <nav aria-label="breadcrumb">  
     <ul id="breadcrumb" >
         <li><a href="/">Home</a></li>
     </ul>
@@ -34,18 +34,18 @@
   <!-- Beginning main -->
   <main id="maincontent">
     <!-- Beginning restaurant -->
-    <!-- Compartmentalized Restaurant name and category-->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <!-- <img id="restaurant-img"> -->
+      <h2 id="restaurant-name"></h2>
       <!-- removed image as it doesn't add valuable information-->
+    </section>
+    <section>
       <p id="restaurant-cuisine"></p>
     </section>
     <!-- New section to contain the address, map, and hours for each item-->
     <section id="location-address-hours">
       <p id="restaurant-address"></p>
       <section id="map-container">
-        <div id="map" tabindex="0" role="application" aria-label="Map Interface with restaurant locations" title="Location Map"></div>
+        <div id="map" role="application" aria-label="Map Interface with restaurant locations" title="Location Map"></div>
       </section>
       <!--Wrapped in a flex container div in order to format content once the page populates-->
       <div class="flex-layout-location-hours">
