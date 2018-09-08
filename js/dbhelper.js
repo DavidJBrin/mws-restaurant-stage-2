@@ -8,20 +8,50 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `http://localhost:${port}/data/restaurants.json`;
+    const port = 1337; // Change this to your server port
+    return `http://localhost:${port}/restaurants`;
   }
 
+  /*
+  import idb from 'idb';
+
+  const dbPromise = idb.open('raith-udacity-restaurant', 1, upgradeDb => {
+      switch (upgradeDb.oldVersion) {
+          case 0:
+          case 1:
+              upgradeDb.createObjectStore('restaurants', {keyPath: 'id'});
+      }
+  });
+*/
   /**
    * Fetch all restaurants.
    */
-  static fetchRestaurants(callback) {
+  static fetchRestaurants(callback, id) {
+    let retrieveURL;
+    if (!id) {
+      retrieveURL = DBHelper.DATABASE_URL;
+    } else {
+      retrieveURL = DBHelper.DATABASE_URL + '/' + id;
+    }
+    fetch(retrieveURL, {method:'GET'})
+      .then(response => {
+        response.json().then(restaurants => {
+          console.log('Restaurants JSON ', restaurants);
+          callback(null, restaurants);
+        });
+      })
+      .catch(error => {
+        callback('Failed Request. Error Returned: $(error)', null);
+      })
+  }
+/* 
+* Removing xhr call in favor of a fetch *  
     let xhr = new XMLHttpRequest();
     xhr.open('GET', DBHelper.DATABASE_URL);
     xhr.onload = () => {
       if (xhr.status === 200) { // Got a success response from server!
         const json = JSON.parse(xhr.responseText);
-        const restaurants = json.restaurants;
+        const restaurants = json;
         callback(null, restaurants);
       } else { // Oops!. Got an error from server.
         const error = (`Request failed. Returned status of ${xhr.status}`);
@@ -30,6 +60,7 @@ class DBHelper {
     };
     xhr.send();
   }
+*/
 
   /**
    * Fetch a restaurant by its ID.
@@ -150,7 +181,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    return (`/img/${restaurant.photograph}.jpg`);
   }
 
   /**
