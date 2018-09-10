@@ -12,17 +12,18 @@ class DBHelper {
     return `http://localhost:${port}/restaurants`;
   }
 
-  /*
   import idb from 'idb';
 
-  const dbPromise = idb.open('raith-udacity-restaurant', 1, upgradeDb => {
-      switch (upgradeDb.oldVersion) {
-          case 0:
-          case 1:
-              upgradeDb.createObjectStore('restaurants', {keyPath: 'id'});
-      }
-  });
-*/
+  function openDatabase() {
+    if (!navigator.serviceWorker){
+      return Promise.resolve();
+    }
+    return idb.open('raith-udacity-restaurant', 1, function(updgradeDb) {
+      var restStore = upgradeDb.createObjectStore('restaurants', {keyPath: 'id'});
+      restStore.createIndex('neighborhood', 'neighborhood');
+    });
+  }
+  
   /**
    * Fetch all restaurants.
    */
