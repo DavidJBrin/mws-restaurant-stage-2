@@ -1,6 +1,17 @@
 /**
  * Common database helper functions.
  */
+
+function openDatabase() {
+  if (!navigator.serviceWorker){
+    return Promise.resolve();
+  }
+  return idb.open('raith-udacity-restaurant', 1, function(updgradeDb) {
+    var restStore = upgradeDb.createObjectStore('restaurants', {keyPath: 'id'});
+    restStore.createIndex('neighborhood', 'neighborhood');
+  });
+};
+
 class DBHelper {
 
   /**
@@ -12,17 +23,7 @@ class DBHelper {
     return `http://localhost:${port}/restaurants`;
   }
 
-  import idb from 'idb';
-
-  function openDatabase() {
-    if (!navigator.serviceWorker){
-      return Promise.resolve();
-    }
-    return idb.open('raith-udacity-restaurant', 1, function(updgradeDb) {
-      var restStore = upgradeDb.createObjectStore('restaurants', {keyPath: 'id'});
-      restStore.createIndex('neighborhood', 'neighborhood');
-    });
-  }
+    
   
   /**
    * Fetch all restaurants.
