@@ -1,7 +1,6 @@
-//The service worker was updated for Stage 2 to reflect caching changes 
-debugger;
+//The service worker was updated for Stage 2 to reflect caching changes
 var staticCacheName = 'mws-restaurant-v1';
-var urlsToCache = [
+/*var urlsToCache = [
     '/',
     '/index.html',
     '/restaurant.html',
@@ -12,16 +11,29 @@ var urlsToCache = [
     '/js/restaurant_info.js',
     '/sw.js',
     '/img/*.*'
-]
+];
+*/
 
-
-debugger;
 // create a cache with the above files
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
-            console.log("track opening the service worker");
-            return cache.addAll(urlsToCache)
+            console.log('track opening the service worker');
+            return cache.addAll(
+                [
+                    '/',
+                    '/index.html',
+                    '/restaurant.html',
+                    '/css/styles.css',
+                    '/js/dbhelper.js',
+                    '/js/idb.js',
+                    '/js/main.js',
+                    '/js/restaurant_info.js',
+                    '/sw.js',
+                    '/img/*.*'
+                ]
+
+            );
         })
     );
 });
@@ -41,7 +53,7 @@ self.addEventListener('activate', function(event) {
         })
     );
 });
-debugger;
+
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request)

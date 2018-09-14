@@ -110,10 +110,12 @@ class DBHelper {
         //get the array
         const restaurants = returnRestaurants;
         callback(null, restaurants);
+        console.log('restaurants cached');
         //no error, return the restaurants
       })
       .catch(function(error) {
         callback(error, null);
+        console.log('restaurants not retrieved and not cached?');
       })
     }
   };
@@ -146,8 +148,10 @@ class DBHelper {
       } else {
         const restaurant = restaurants.find(r => r.id == id);
         if (restaurant) { // Got the restaurant
+          console.log('fetchRestaurantsById succeeded');
           callback(null, restaurant);
         } else { // Restaurant does not exist in the database
+          console.log('fetchRestaurantsById failed');
           callback('Restaurant does not exist', null);
         }
       }
