@@ -1,28 +1,27 @@
-/* Building the service worker was accomplished while viewing the Offline First modules
-that are part of the course, and adapting the promises and functions to fit the restaurant
-site and ensure the cache was reflective of the needs of the site.
-Last reviewed 7/23/2018 @ Udacity Nanodegree: Mobile Web Specialist, Lesson 17: Introducing
-the service worker.
-*/ 
-
+//The service worker was updated for Stage 2 to reflect caching changes 
+debugger;
 var staticCacheName = 'mws-restaurant-v1';
+var urlsToCache = [
+    '/',
+    '/index.html',
+    '/restaurant.html',
+    '/css/styles.css',
+    '/js/dbhelper.js',
+    '/js/idb.js',
+    '/js/main.js',
+    '/js/restaurant_info.js',
+    '/sw.js',
+    '/img/*.*'
+]
 
+
+debugger;
 // create a cache with the above files
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
-            return cache.addAll(
-                [
-                    '/',
-                    '/index.html',
-                    '/restaurant.html',
-                    '/css/styles.css',
-                    '/js/dbhelper.js',
-                    '/img/*.*',
-                    '/js/main.js',
-                    '/js/restaurant_info.js',
-                    '/'
-            ]);
+            console.log("track opening the service worker");
+            return cache.addAll(urlsToCache)
         })
     );
 });
@@ -40,15 +39,39 @@ self.addEventListener('activate', function(event) {
                 })
             );
         })
-    
     );
 });
-
+debugger;
 self.addEventListener('fetch', function(event) {
     event.respondWith(
-        caches.match(event.request).then(function(response) {
-            if (response) return response;
-            return fetch(event.request);
-        })
-    );
+        caches.match(event.request)
+            .then(function(response) {
+                if (response) {
+                    return response;
+                }
+                //create a response function that puts the item into cache
+                var fetchRequest = event.request.clone();
+
+                return fetch(fetchRequest).then(
+                    function(response) {
+                        if(!response || response.status !== 200 || response.type !== 'basic') {
+                            return response;
+                        }
+                    var responseToCache = response.clone();
+
+                    caches.open(staticCacheName)
+                    .then(function(cache) {
+                        cache.put(event.request, responseToCache);
+                    });
+                    return response;
+                    }
+                );
+            })
+        );
+});
+
+self.addEventListener('message', function(event){
+    if (event.data.action === 'skipWaiting') {
+        self.skipWaiting();
+    }
 });

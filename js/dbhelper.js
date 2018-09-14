@@ -98,24 +98,25 @@ class DBHelper {
   /**
    * Fetch all restaurants.
    */
-  static fetchRestaurants(callback, id) {
-    let retrieveURL;
-    if (!id) {
-      retrieveURL = DBHelper.DATABASE_URL;
-    } else {
-      retrieveURL = DBHelper.DATABASE_URL + '/' + id;
+  static fetchRestaurants(callback) {
+    idbProject.addRestaurants(callback);
+    //if database hasn't populated, pull from server and populate
+    if(!restaurants) {
+      fetch(DBHelper.DATABASE_URL)
+      .then(function(response) {
+        //get from URL
+        return response.json();
+      }).then(function(returnRestaurants) {
+        //get the array
+        const restaurants = returnRestaurants;
+        callback(null, restaurants);
+        //no error, return the restaurants
+      })
+      .catch(function(error) {
+        callback(error, null);
+      })
     }
-    fetch(retrieveURL, {method:'GET'})
-      .then(response => {
-        response.json().then(restaurants => {
-          console.log('Restaurants JSON ', restaurants);
-          callback(null, restaurants);
-        });
-      })
-      .catch(error => {
-        callback('Failed Request. Error Returned: $(error)', null);
-      })
-  }
+  };
 /* 
 * Removing xhr call in favor of a fetch *  
     let xhr = new XMLHttpRequest();
