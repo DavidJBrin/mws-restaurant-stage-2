@@ -29,22 +29,24 @@ var idbProject = (function() {
     }
   });
 
-  // All the restaurants into the pool
+
   function addRestaurants() {
     fetch(DBHelper.DATABASE_URL)
     .then(response => response.json())
     .then(function(restaurants) {
-      console.log('json data for restaurants compiled')
-      dbPromise.then((db) => {
+      console.log('Add restaurant to cache: ', restaurants);
+      return dbPromise.then((db) => {
         let restaurantValStore = db.transaction('restaurants', 'readwrite').objectStore('restaurants')
           for (const restaurant of restaurants) {
+            console.log('added restaurant: ', restaurant);
             restaurantValStore.put(restaurant)
           }
       })
       //send the information back out
       callback(null, restaurants);
     }).catch(function (err) {
-      dbPromise.then( (db) => {
+      return dbPromise.then( (db) => {
+        console.log('catch err triggered');
         let restaurantValStore = db.transaction('restaurants').objectStore('restaurants')
         return restaurantValStore.getAll();
       })

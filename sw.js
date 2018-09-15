@@ -18,7 +18,7 @@ var staticCacheName = 'mws-restaurant-v1';
 self.addEventListener('install', function(event) {
     event.waitUntil(
         caches.open(staticCacheName).then(function(cache) {
-            console.log('track opening the service worker');
+            console.log('returning the added cache.addall');
             return cache.addAll(
                 [
                     '/',
