@@ -21,16 +21,16 @@ self.addEventListener('install', function(event) {
             console.log('returning the added cache.addall');
             return cache.addAll(
                 [
-                    '/',
-                    '/index.html',
-                    '/restaurant.html',
-                    '/css/styles.css',
-                    '/js/dbhelper.js',
-                    '/js/idb.js',
-                    '/js/main.js',
-                    '/js/restaurant_info.js',
-                    '/sw.js',
-                    '/img/*.*'
+                    './',
+                    './index.html',
+                    './restaurant.html',
+                    './css/styles.css',
+                    './js/dbhelper.js',
+                    './js/idb.js',
+                    './js/main.js',
+                    './js/restaurant_info.js',
+                    './sw.js',
+                    './img/*.*'
                 ]
 
             );
