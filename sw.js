@@ -1,18 +1,5 @@
 //The service worker was updated for Stage 2 to reflect caching changes
 var staticCacheName = 'mws-restaurant-v1';
-/*var urlsToCache = [
-    '/',
-    '/index.html',
-    '/restaurant.html',
-    '/css/styles.css',
-    '/js/dbhelper.js',
-    '/js/idb.js',
-    '/js/main.js',
-    '/js/restaurant_info.js',
-    '/sw.js',
-    '/img/*.*'
-];
-*/
 
 // create a cache with the above files
 self.addEventListener('install', function(event) {
@@ -32,7 +19,6 @@ self.addEventListener('install', function(event) {
                     './sw.js',
                     './img/*.*'
                 ]
-
             );
         })
     );
