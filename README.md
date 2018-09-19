@@ -2,6 +2,15 @@
 ---
 #### _Three Stage Course Material Project - Restaurant Reviews_
 
+## Project Overview: Stage 2
+
+    Fork and clone the server repository. You’ll use this development server to develop your project code.
+    Change the data source for your restaurant requests to pull JSON from the server, parse the response and use the response to generate the site UI.
+    Cache the JSON responses for offline use by using the IndexedDB API.
+    Follow the recommendations provided by Lighthouse to achieve the required performance targets.
+    Submit your project code for review.
+
+
 ## Project Overview: Stage 1
 
 For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
