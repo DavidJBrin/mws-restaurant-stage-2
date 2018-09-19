@@ -99,6 +99,8 @@ class DBHelper {
   
   /**
    * Fetch all restaurants.
+   * Based on information garnered from the Udacity Course on IDB featuring Wittr
+   * and conversations with project coach Doug Brown 
    */
   static fetchRestaurants(callback) {
     idbProject.addRestaurants(callback);
@@ -124,6 +126,8 @@ class DBHelper {
 
   /**
    * Fetch a restaurant by its ID.
+   * Based on information garnered from the Udacity Course on IDB featuring Wittr
+   * and conversations with project coach Doug Brown    
    */
   static fetchRestaurantById(id, callback) {
     // fetch all restaurants with proper error handling.

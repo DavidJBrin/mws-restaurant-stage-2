@@ -1,4 +1,6 @@
 //The service worker was updated for Stage 2 to reflect caching changes
+// Based on information garnered from the Udacity Course on IDB featuring Wittr
+//* and conversations with project coach Doug Brown 
 var staticCacheName = 'mws-restaurant-v1';
 
 // create a cache with the above files
