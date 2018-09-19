@@ -17,7 +17,8 @@ self.addEventListener('install', function(event) {
                     './js/main.js',
                     './js/restaurant_info.js',
                     './sw.js',
-                    './img/'
+                    './img/',
+                    './manifest.json'
                 ]
             );
         })
